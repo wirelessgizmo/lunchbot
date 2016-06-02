@@ -68,10 +68,10 @@
       <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.49044585">
-              <caret line="30" column="13" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
+            <state vertical-scroll-proportion="0.33333334">
+              <caret line="30" column="22" selection-start-line="30" selection-start-column="22" selection-end-line="30" selection-end-column="22" />
               <folding>
-                <marker date="1464867199000" expanded="true" signature="864:891" placeholder="SELECT name ..test_table..." />
+                <marker date="1464867793000" expanded="true" signature="876:903" placeholder="SELECT name ..test_table..." />
               </folding>
             </state>
           </provider>
@@ -343,10 +343,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.49044585">
-          <caret line="30" column="13" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="30" column="22" selection-start-line="30" selection-start-column="22" selection-end-line="30" selection-end-column="22" />
           <folding>
-            <marker date="1464867199000" expanded="true" signature="864:891" placeholder="SELECT name ..test_table..." />
+            <marker date="1464867793000" expanded="true" signature="876:903" placeholder="SELECT name ..test_table..." />
           </folding>
         </state>
       </provider>

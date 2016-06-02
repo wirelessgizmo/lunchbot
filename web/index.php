@@ -28,7 +28,7 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
 
 $app->get('/', function () use ($app) {
 
-    die('a');
+    die('in the pooper');
     $app['monolog']->addDebug('logging output.');
 
     $st = $app['pdo']->prepare('SELECT name FROM test_table');
