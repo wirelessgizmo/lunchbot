@@ -9,10 +9,11 @@ use App\Validate;
 
 $options = array('hint' => array(
     'response_type' => 'ephemeral',
-    'text' => 'Use `/lunch` to make small lists to order food together',
-    'attachments' => array(array('text' => 'Use `/lunch [place]` to create a new order for [place] or to show an existing list.
-    Use `/lunch [place] add [item]` to add an [item] to the order [place].
-    Use `/lunch [place] close` to close a list',
+    'text' => 'Use `/lunch` to collaborate on lunch orders',
+    'attachments' => array(array('text' => '`/lunch Oporto`.
+    `/lunch Oporto add Large Bondi Meal`.
+    `/lunch Oporto close`
+    `/lunch list`',
         "mrkdwn_in" => array(
             "text",
         ))),
