@@ -4,6 +4,7 @@ require('../vendor/autoload.php');
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Dan\Validate;
 
 const SLACK_KEY = '5EVrWCHPRQTWP4y8ak4znfpr';
 
@@ -25,15 +26,18 @@ $app->register(new Silex\Provider\MonologServiceProvider(), array(
   'monolog.logfile' => 'php://stderr',
 ));
 
+/** Validate the request before doing anything else */
+$app->before(function (Request $request) {
+
+    if (! Validate\validate::request($request)) {
+        return new Response("Oops I didn't quite get that, try again?", 500);
+    }
+
+});
 
 // Our web handlers
 $app->post('/lunchBot', function (Request $request){
 
-    if($request->get('token') !== SLACK_KEY){
-       return new Response("Invalid Slack token",500);
-    }
-
-    return new Response("Invalid Slack token",500);
 
     return new Response('Thank you for your feedback!', 200);
 });
