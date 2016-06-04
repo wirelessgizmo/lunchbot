@@ -9,7 +9,7 @@ use App\Validate;
 
 $options = array('hint' => array(
     'response_type' => 'ephemeral',
-    'text' => 'How to use /lunch',
+    'text' => 'Use `/lunch` to make small lists to order food together',
     'attachments' => array(array('text' => 'use `/lunch [place]` to create a new order for [place] or to show an existing list named [place].\n
                                        use `/lunch [place] add [item] to add an [item] to the order [place].\n'))
 ));
