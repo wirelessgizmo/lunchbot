@@ -29,7 +29,7 @@ $app->register(new Silex\Provider\MonologServiceProvider(), array(
 $app->post('/lunchBot', function (Request $request) {
 
    foreach($_POST as $key => $value){
-       echo "{$key}:{$value}";
+       echo "{$key}:{$value}<br>";
    }
 
     return new Response('Thank you for your feedback!', 200);
@@ -42,3 +42,10 @@ $app->run();
 
 
 //5EVrWCHPRQTWP4y8ak4znfpr
+
+/**
+
+ git add .
+ git commit -m "files"
+ git push heroku master
+ */
