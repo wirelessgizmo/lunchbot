@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 const SLACK_KEY = '5EVrWCHPRQTWP4y8ak4znfpr';
 
 $app = new Silex\Application();
-//$app['debug'] = true;
+$app['debug'] = true;
 
 $dbopts = parse_url(getenv('DATABASE_URL'));
 
@@ -32,7 +32,9 @@ $app->post('/lunchBot', function (Request $request) use ($app){
     if($request->get('token') !== SLACK_KEY){
         $app->abort(500, "Invalid Slack token");
     }
+
     $app->abort(500, "Invalid Slack token");
+
     return new Response('Thank you for your feedback!', 200);
 });
 
