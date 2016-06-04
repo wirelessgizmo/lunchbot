@@ -7,6 +7,14 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use App\Validate;
 
+$hint = array(
+    'response_type' => 'ephemeral',
+    'text' => 'How to use /lunch',
+    'attachments' => array('text' => 'use `/lunch [place]` to create a new order for [place] or to show an existing list named [place].\n
+                                       use `/lunch [place] add [item] to add an [item] to the order [place].\n')
+);
+
+
 $app = new Silex\Application();
 $app['debug'] = true;
 
@@ -36,16 +44,19 @@ $app->before(function (Request $request, Silex\Application $app) {
 
 
 /** Entry point for the Slack request */
-$app->post('/lunchBot', function (Request $request){
+$app->post('/lunchBot', function (Request $request) use($app){
 
     $components = explode(' ', $request->get('text'));
 
+    if($components[0] == 'help'){
+        return $app->json($hint, 200);
+    }
     /**
-    /order oporto #adds the list
-    /order oporto add large chips #adds an item
-    /order oporto #already exists, outputs the list
-    /order list #lists all current orders
-    /order oporto close #closes an order
+    /lunch oporto #adds the list
+    /lunch oporto add large chips #adds an item
+    /lunch oporto #already exists, outputs the list
+    /lunch list #lists all current orders
+    /lunch oporto close #closes an order
 */
 
     return new Response('Thank you for your feedback!', 200);
