@@ -68,12 +68,12 @@
       <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6366723">
-              <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.25466892">
+              <caret line="10" column="2" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
               <folding>
                 <element signature="e#43#88#0#PHP" expanded="true" />
-                <element signature="e#285#560#0#PHP" expanded="false" />
-                <element signature="e#663#710#0#PHP" expanded="false" />
+                <element signature="e#287#562#0#PHP" expanded="false" />
+                <element signature="e#665#712#0#PHP" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -303,12 +303,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6366723">
-          <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.25466892">
+          <caret line="10" column="2" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
           <folding>
             <element signature="e#43#88#0#PHP" expanded="true" />
-            <element signature="e#285#560#0#PHP" expanded="false" />
-            <element signature="e#663#710#0#PHP" expanded="false" />
+            <element signature="e#287#562#0#PHP" expanded="false" />
+            <element signature="e#665#712#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>

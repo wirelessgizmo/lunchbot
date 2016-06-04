@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 const SLACK_KEY = '5EVrWCHPRQTWP4y8ak4znfpr';
 
 $app = new Silex\Application();
-$app['debug'] = true;
+//$app['debug'] = true;
 
 $dbopts = parse_url(getenv('DATABASE_URL'));
 
