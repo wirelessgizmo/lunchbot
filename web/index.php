@@ -28,11 +28,13 @@ $app->register(new Silex\Provider\MonologServiceProvider(), array(
 
 /** Validate the request before doing anything else */
 $app->before(function (Request $request) {
-
+var_dump($request);
+    die('a');
     if (! Validate\validate::request($request)) {
         return new Response("Oops I didn't quite get that, try again?", 500);
     }
 
+    return new Response("Oops I didn't quite get that, try again?", 500);
 });
 
 // Our web handlers
