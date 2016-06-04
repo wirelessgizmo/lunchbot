@@ -32,7 +32,7 @@ $app->post('/lunchBot', function (Request $request) use ($app){
     if($request->get('token') !== SLACK_KEY){
         $app->abort(500, "Invalid Slack token");
     }
-
+    $app->abort(500, "Invalid Slack token");
     return new Response('Thank you for your feedback!', 200);
 });
 
