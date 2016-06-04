@@ -9,13 +9,23 @@ use App\Validate;
 
 $options = array('hint' => array(
     'response_type' => 'ephemeral',
-    'text' => 'Use `/lunch` to make small lists to order food together\nUse `/lunch [place]` to create a new order for [place] or to show an existing list named [place].\n
-                                       use `/lunch [place] add [item] to add an [item] to the order [place].\n')
-);
+    'text' => 'Use `/lunch` to make small lists to order food together',
+    'attachments' => array(array('text' => 'Use `/lunch [place]` to create a new order for [place] or to show an existing list named [place].\n
+                                       Use `/lunch [place] add [item]` to add an [item] to the order [place].\n
+                                       Use `/lunch [place] close` to close a list'))
+));
+
 
 
 $app = new Silex\Application();
 $app['debug'] = true;
+order bot
+
+/order oporto #adds the list
+/order oporto add large chips #adds an item
+/order oporto #already exists, outputs the list
+/order list #lists all current orders
+/order oporto close #closes an order
 
 $dbopts = parse_url(getenv('DATABASE_URL'));
 
