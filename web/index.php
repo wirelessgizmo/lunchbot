@@ -19,13 +19,6 @@ $options = array('hint' => array(
 
 $app = new Silex\Application();
 $app['debug'] = true;
-order bot
-
-/order oporto #adds the list
-/order oporto add large chips #adds an item
-/order oporto #already exists, outputs the list
-/order list #lists all current orders
-/order oporto close #closes an order
 
 $dbopts = parse_url(getenv('DATABASE_URL'));
 
