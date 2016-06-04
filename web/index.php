@@ -1,12 +1,11 @@
 <?php
 
+
 require('../vendor/autoload.php');
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Dan\Validate;
-
-const SLACK_KEY = '5EVrWCHPRQTWP4y8ak4znfpr';
+use App\Validate;
 
 $app = new Silex\Application();
 $app['debug'] = true;
@@ -26,19 +25,28 @@ $app->register(new Silex\Provider\MonologServiceProvider(), array(
   'monolog.logfile' => 'php://stderr',
 ));
 
-/** Validate the request before doing anything else */
-$app->before(function (Request $request) {
+/** Before doing anything with routing, let's see if it's a valid request with the definitions we require */
+$app->before(function (Request $request, Silex\Application $app) {
 
-    if (! Validate\validate::request($request)) {
-        return new Response("Oops I didn't quite get that, try again?", 500);
+    if(! Validate::request($request)){
+        return new Response('Oops I didn\'t quite get that! Try again?',500);
     }
 
-    return new Response("Oops I didn't quite get that, try again?", 500);
 });
 
-// Our web handlers
+
+/** Entry point for the Slack request */
 $app->post('/lunchBot', function (Request $request){
 
+    $components = explode(' ', $request->get('text'));
+
+    /**
+    /order oporto #adds the list
+    /order oporto add large chips #adds an item
+    /order oporto #already exists, outputs the list
+    /order list #lists all current orders
+    /order oporto close #closes an order
+*/
 
     return new Response('Thank you for your feedback!', 200);
 });
@@ -47,12 +55,7 @@ $app->post('/lunchBot', function (Request $request){
 
 $app->run();
 
-
-
-
-
 /**
-token:5EVrWCHPRQTWP4y8ak4znfpr
 <br>team_id:T0HKBFUVC
 <br>team_domain:highballcollection
 <br>channel_id:C0HKBAS7L
@@ -61,8 +64,7 @@ token:5EVrWCHPRQTWP4y8ak4znfpr
 <br>user_name:danchurchill05
 <br>command:/lunch
 <br>text:test
-<br>response_url:https://hooks.slack.com/commands/T0HKBFUVC/48156108743/HRwbi6m3C4bBMEEozL6bta7b
-<br>Thank you for your feedback!
+
  *
  git add .
  git commit -m "files"
