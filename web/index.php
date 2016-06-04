@@ -37,6 +37,9 @@ $app->post('/lunchBot', function (Request $request) use ($app){
 });
 
 
+$app->error(function (\Exception $e, Request $request, $code) {
+    return new Response('We are sorry, but something went terribly wrong.');
+});
 
 $app->run();
 
