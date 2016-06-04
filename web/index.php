@@ -28,7 +28,9 @@ $app->register(new Silex\Provider\MonologServiceProvider(), array(
 // Our web handlers
 $app->post('/lunchBot', function (Request $request) {
 
-    var_dump($_POST);
+   foreach($_POST as $key => $value){
+       echo "{$key}:{$value}";
+   }
 
     return new Response('Thank you for your feedback!', 200);
 });
