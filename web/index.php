@@ -12,7 +12,12 @@ $options = array('hint' => array(
     'text' => 'Use `/lunch` to make small lists to order food together',
     'attachments' => array(array('text' => 'Use `/lunch [place]` to create a new order for [place] or to show an existing list named [place].\n
                                        Use `/lunch [place] add [item]` to add an [item] to the order [place].\n
-                                       Use `/lunch [place] close` to close a list'))
+                                       Use `/lunch [place] close` to close a list')),
+    "mrkdwn_in" => array(
+    "text",
+    "attachments"
+    )
+
 ));
 
 
