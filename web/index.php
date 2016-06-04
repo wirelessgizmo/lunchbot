@@ -5,6 +5,7 @@ require('../vendor/autoload.php');
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
+const SLACK_KEY = '5EVrWCHPRQTWP4y8ak4znfpr';
 
 $app = new Silex\Application();
 $app['debug'] = true;
@@ -26,11 +27,11 @@ $app->register(new Silex\Provider\MonologServiceProvider(), array(
 
 
 // Our web handlers
-$app->post('/lunchBot', function (Request $request) {
+$app->post('/lunchBot', function (Request $request) use ($app){
 
-   foreach($_POST as $key => $value){
-       echo "{$key}:{$value}<br>";
-   }
+    if($request->get('token') !== SLACK_KEY){
+        $app->abort(500, "Invalid Slack token");
+    }
 
     return new Response('Thank you for your feedback!', 200);
 });
@@ -41,10 +42,21 @@ $app->run();
 
 
 
-//5EVrWCHPRQTWP4y8ak4znfpr
+
 
 /**
-
+token:5EVrWCHPRQTWP4y8ak4znfpr
+<br>team_id:T0HKBFUVC
+<br>team_domain:highballcollection
+<br>channel_id:C0HKBAS7L
+<br>channel_name:random
+<br>user_id:U0HKC60GY
+<br>user_name:danchurchill05
+<br>command:/lunch
+<br>text:test
+<br>response_url:https://hooks.slack.com/commands/T0HKBFUVC/48156108743/HRwbi6m3C4bBMEEozL6bta7b
+<br>Thank you for your feedback!
+ *
  git add .
  git commit -m "files"
  git push heroku master
