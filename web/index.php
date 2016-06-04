@@ -27,21 +27,18 @@ $app->register(new Silex\Provider\MonologServiceProvider(), array(
 
 
 // Our web handlers
-$app->post('/lunchBot', function (Request $request) use ($app){
+$app->post('/lunchBot', function (Request $request){
 
     if($request->get('token') !== SLACK_KEY){
-        $app->abort(500, "Invalid Slack token");
+       return new Response("Invalid Slack token",500);
     }
 
-    $app->abort(500, "Invalid Slack token");
+    return new Response("Invalid Slack token",500);
 
     return new Response('Thank you for your feedback!', 200);
 });
 
 
-$app->error(function (\Exception $e, Request $request, $code) {
-    return new Response('We are sorry, but something went terribly wrong.');
-});
 
 $app->run();
 
