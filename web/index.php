@@ -47,24 +47,34 @@ $app->post('/lunchBot', function (Request $request) use ($app) {
     $subRequestRoute = '';
     $type = 'GET';
 
-    /** User is after the hint text */
-    if ($components[0] == Definitions::REQUEST_HELP) {
+    /** User is after the hint text or a listing of all orders
+     * /lunch list
+     * /lunch help
+     */
+    if (in_array($components[0], array(Definitions::REQUEST_LIST, Definitions::REQUEST_HELP))) {
         $subRequestRoute = "/{$components[0]}";
     }
 
-    /** List all the orders */
-    if ($components[0] == Definitions::REQUEST_LIST) {
-        $subRequestRoute = "/{$components[0]}";
-    }
-
+    /** User wants to add an item to a list
+     * /lunch oporto add chips
+     */
     if ($components[1] == 'add') {
-        /** Add to an order */
+        $subRequestRoute = "/{$components[0]}/add/{$components[1]}";
+        $type = "POST";
     }
 
+    /** User wants to delete an order
+     * /lunch oporto close
+     */
     if ($components[1] == Definitions::REQUEST_CLOSE) {
-        /** remove an order */
         $subRequestRoute = "/{$components[0]}/close";
         $type = "DELETE";
+    }
+
+    /** Default request is to try and list a specific order */
+    if($subRequestRoute == '') {
+        $subRequestRoute = "/{$components[0]}";
+        $type = "GET";
     }
 
 
@@ -73,12 +83,6 @@ $app->post('/lunchBot', function (Request $request) use ($app) {
 
     $response = $app->handle($subRequest, HttpKernelInterface::SUB_REQUEST, false);
 
-    /** We're here, they must be creating a list or wanting to list it */
-    //if ($model->exists($components[0])) {
-        /** List the order */
-   // }
-
-   // $model->create();
     /**
      * /lunch oporto
      * /lunch oporto add large chips
@@ -95,6 +99,11 @@ $app->delete('/{order}/close', function (Request $request) use ($app) {
     return new Response('That order has been removed', 200);
 });
 
+$app->post('/{order}/add/{item}', function (Request $request) use ($app) {
+    return new Response('Added that item to the order', 200);
+});
+
+
 /**
  * When the user types /help
  */
@@ -109,7 +118,11 @@ $app->get('/list', function (Request $request) use ($app) {
 
 });
 
+$app->get('/{order}', function (Request $request) use ($app) {
 
+    return new Response('here is a list of all the items in that order',200);
+
+});
 $app->run();
 
 
