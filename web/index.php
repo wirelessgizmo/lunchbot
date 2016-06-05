@@ -32,7 +32,7 @@ $app->register(new Silex\Provider\MonologServiceProvider(), array(
 $app->before(function (Request $request) {
 
     if (!Validate::request($request)) {
-        return new Response('Oops I didn\'t quite get that! Try again?', 500);
+        return new Response('Oops I didn\'t quite get that! Perhaps type `/lunch help`', 500);
     }
 
 });
