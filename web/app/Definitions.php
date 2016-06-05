@@ -14,8 +14,8 @@ final class Definitions
         'text' => 'Use `/lunch` to collaborate on lunch orders',
         'attachments' => array(array('text' => '`/lunch Oporto`
     `/lunch Oporto add Large Bondi Meal`
-    `/lunch Oporto close`
-    `/lunch list`',
+    `/lunch list`
+    `/lunch Oporto close`',
             "mrkdwn_in" => array(
                 "text",
             ))));
