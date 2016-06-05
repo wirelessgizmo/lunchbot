@@ -20,7 +20,7 @@ class Validate{
     public static function request($request){
 
         /** Is the token valid? */
-        if ($request->get('token') !== SLACK_KEY) {
+        if ($request->get('token') !== SLACK_KEY || $request->get('text') == '') {
             return false;
         };
 

@@ -74,24 +74,13 @@ $app->post('/lunchBot', function (Request $request) use ($app) {
     /** Default request is to try and list a specific order */
     if($subRequestRoute == '') {
         $subRequestRoute = "/{$components[0]}";
-        $type = "GET";
     }
-
 
     /** Create and handle the sub request */
     $subRequest = Request::create($subRequestRoute, $type);
 
-    $response = $app->handle($subRequest, HttpKernelInterface::SUB_REQUEST, false);
+    return $app->handle($subRequest, HttpKernelInterface::SUB_REQUEST, false);
 
-    /**
-     * /lunch oporto
-     * /lunch oporto add large chips
-     * /lunch list
-     * /lunch oporto close
-     */
-
-
-    return $response;
 });
 
 /** Closes an order */
@@ -99,33 +88,33 @@ $app->delete('/{order}/close', function (Request $request) use ($app) {
     return new Response('That order has been removed', 200);
 });
 
+/** Add an item to an order */
 $app->post('/{order}/add/{item}', function (Request $request) use ($app) {
     return new Response('Added that item to the order', 200);
 });
 
 
-/**
- * When the user types /help
- */
+/** When the user wants help */
 $app->get('/help', function (Request $request) use ($app) {
 
     return $app->json(Definitions::$HINT_TEXT, 200);
 
 });
 
+/** Lists all orders */
 $app->get('/list', function (Request $request) use ($app) {
     return new Response('here is a list of all the orders',200);
 
 });
 
+/** Lists the items in an order */
 $app->get('/{order}', function (Request $request) use ($app) {
 
     return new Response('here is a list of all the items in that order',200);
 
 });
+
 $app->run();
-
-
 
 
 /**
